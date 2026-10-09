@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Birthday Surprise 🎂</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #1b1025, #4b194f, #171225);
+    color: white;
+    text-align: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.screen {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+}
+
+.card {
+    width: 100%;
+    max-width: 420px;
+    padding: 30px 20px;
+    border-radius: 25px;
+    background: rgba(255,255,255,0.10);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+}
+
+h1 {
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+p {
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+button {
+    border: none;
+    padding: 14px 28px;
+    border-radius: 30px;
+    font-size: 17px;
+    background: #ff6fae;
+    color: white;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+.hidden {
+    display: none;
+}
+
+.photo {
+    width: 210px;
+    height: 210px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid white;
+    margin: 15px auto;
+}
+
+.cake {
+    font-size: 75px;
+    margin: 20px 0;
+    cursor: pointer;
+}
+
+#message {
+    display: none;
+}
+
+.heart {
+    position: fixed;
+    animation: fall 5s linear;
+    top: -20px;
+    font-size: 25px;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-20px) rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- MUSIC -->
+<audio id="birthdayMusic" loop>
+    <source src="birthday.mp3" type="audio/mpeg">
+</audio>
+
+
+<!-- FIRST SCREEN -->
+<div class="screen" id="start">
+
+    <div class="card">
+
+        <h1>Hey JAWA42T! 💖</h1>
+
+        <p>
+            I have a little surprise for you... 👀✨
+        </p>
+
+        <button onclick="openSurprise()">
+            Open Your Surprise 🎁
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- SECOND SCREEN -->
+<div class="screen hidden" id="surprise">
+
+    <div class="card">
+
+        <h1>
+            Finally, it's your special day, JAWA42T! 🎉❤️
+        </h1>
+
+        <img src="disha.jpg" class="photo">
+
+        <p>
+            A little something made specially for you. 💕
+        </p>
+
+        <div class="cake" onclick="showMessage()">
+            🥞
+        </div>
+
+        <p>
+            Tap the cake to make your wish 🌙✨
+        </p>
+
+        <div id="message">
+
+            <h2>Happy Birthday, JAWA42T! 🎂✨</h2>
+
+            <p>
+                May your life always be filled with happiness,
+                beautiful moments and lots of smiles. 🥰
+            </p>
+
+            <p>
+                Keep smiling, keep shining and enjoy your special day
+                to the fullest! ❤️
+            </p>
+
+            <p>
+                Once again, Happy Birthday! 🎉🎂❤️
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+function openSurprise() {
+
+    document.getElementById("start").classList.add("hidden");
+
+    document.getElementById("surprise").classList.remove("hidden");
+
+    // Start music after user taps the button
+    let music = document.getElementById("birthdayMusic");
+
+    music.play().catch(function(error) {
+        console.log("Music could not start:", error);
+    });
+
+    createHearts();
+}
+
+
+function showMessage() {
+
+    document.getElementById("message").style.display = "block";
+
+    createHearts();
+
+}
+
+
+function createHearts() {
+
+    for (let i = 0; i < 15; i++) {
+
+        let heart = document.createElement("div");
+
+        heart.className = "heart";
+
+        heart.innerHTML = "💝✨";
+
+        heart.style.left = Math.random() * 100 + "vw";
+
+        heart.style.animationDelay =
+            Math.random() * 2 + "s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(function() {
+            heart.remove();
+        }, 6000);
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
