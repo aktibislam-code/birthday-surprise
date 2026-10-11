@@ -39,7 +39,17 @@ body{
     display:flex;
 }
 
-/* ONLY PAGE 7 WILL SCROLL */
+/* PAGE 3 SCROLL */
+
+#page3{
+    height:100vh;
+    overflow-y:auto;
+    justify-content:flex-start;
+    padding-top:30px;
+    padding-bottom:50px;
+}
+
+/* PAGE 7 SCROLL */
 
 #page7{
     height:100vh;
@@ -308,7 +318,6 @@ button{
 
 <body>
 
-
 <!-- PAGE 1 -->
 
 <div class="page active" id="page1">
@@ -341,7 +350,10 @@ button{
         Continue 💕
     </button>
 
-    <p class="small" id="error"></p>
+    <p
+        class="small"
+        id="error"
+    ></p>
 
 </div>
 
@@ -360,16 +372,54 @@ button{
 
     <div class="game-area">
 
-        <button class="gift-box" onclick="checkGift(0)">🎁</button>
-        <button class="gift-box" onclick="checkGift(1)">🎁</button>
-        <button class="gift-box" onclick="checkGift(2)">🎁</button>
-        <button class="gift-box" onclick="checkGift(3)">🎁</button>
-        <button class="gift-box" onclick="checkGift(4)">🎁</button>
-        <button class="gift-box" onclick="checkGift(5)">🎁</button>
+        <button
+            class="gift-box"
+            onclick="checkGift(0)"
+        >
+            🎁
+        </button>
+
+        <button
+            class="gift-box"
+            onclick="checkGift(1)"
+        >
+            🎁
+        </button>
+
+        <button
+            class="gift-box"
+            onclick="checkGift(2)"
+        >
+            🎁
+        </button>
+
+        <button
+            class="gift-box"
+            onclick="checkGift(3)"
+        >
+            🎁
+        </button>
+
+        <button
+            class="gift-box"
+            onclick="checkGift(4)"
+        >
+            🎁
+        </button>
+
+        <button
+            class="gift-box"
+            onclick="checkGift(5)"
+        >
+            🎁
+        </button>
 
     </div>
 
-    <p id="gameResult" class="small">
+    <p
+        id="gameResult"
+        class="small"
+    >
         Aree kichu ekta special ache r ki... 🤫
     </p>
 
@@ -398,7 +448,8 @@ button{
     </p>
 
     <div class="score">
-        Hearts: <span id="heartScore">0</span>/10
+        Hearts:
+        <span id="heartScore">0</span>/10
     </div>
 
     <div
@@ -406,7 +457,10 @@ button{
         id="heartGame"
     ></div>
 
-    <p id="heartMessage" class="small">
+    <p
+        id="heartMessage"
+        class="small"
+    >
         Catch the heart! ❤️
     </p>
 
@@ -519,7 +573,9 @@ button{
 
         <p>
 
-            <b>Happy Birthday Disha (ভূতু) 😂🎂❤️</b>
+            <b>
+                Happy Birthday Disha (ভূতু) 😂🎂❤️
+            </b>
 
             <br><br>
 
@@ -547,7 +603,9 @@ button{
 
             <br><br>
 
-            <b>Happy Birthday once again! 🎂❤️</b>
+            <b>
+                Happy Birthday once again! 🎂❤️
+            </b>
 
         </p>
 
@@ -558,9 +616,7 @@ button{
 
 <script>
 
-/* =========================
-   PAGE CHANGE
-========================= */
+/* PAGE CHANGE */
 
 function showPage(number){
 
@@ -579,18 +635,21 @@ function showPage(number){
     createHearts();
 
     if(number === 3){
+
         startHeartGame();
+
     }
 
     if(number === 6){
+
         startMemoryGame();
+
     }
+
 }
 
 
-/* =========================
-   AGE
-========================= */
+/* AGE */
 
 function checkAge(){
 
@@ -611,6 +670,7 @@ function checkAge(){
         "Please enter your age first 🎂";
 
         return;
+
     }
 
     if(age < 1 || age > 100){
@@ -619,18 +679,17 @@ function checkAge(){
         "Please enter an age between 1 and 100 💕";
 
         return;
+
     }
 
     error.innerHTML = "";
 
     showPage(2);
+
 }
 
 
-/* =========================
-   GAME 1
-   FIND THE GIFT
-========================= */
+/* GAME 1 */
 
 let giftPosition =
 Math.floor(Math.random()*6);
@@ -641,7 +700,9 @@ let gameFinished = false;
 function checkGift(number){
 
     if(gameFinished){
+
         return;
+
     }
 
     let boxes =
@@ -649,6 +710,7 @@ function checkGift(number){
 
     let result =
     document.getElementById("gameResult");
+
 
     if(number === giftPosition){
 
@@ -676,13 +738,11 @@ function checkGift(number){
         "Nope! 😝 Try another one...";
 
     }
+
 }
 
 
-/* =========================
-   GAME 2
-   CATCH THE HEARTS
-========================= */
+/* GAME 2 */
 
 let heartScore = 0;
 
@@ -699,18 +759,23 @@ function startHeartGame(){
 
     escapeLimit = 0;
 
+
     document
     .getElementById("heartScore")
     .innerHTML = "0";
 
+
     document
     .getElementById("heartNext")
-    .style.display = "none";
+    .style.display =
+    "none";
+
 
     document
     .getElementById("heartMessage")
     .innerHTML =
     "Catch the heart! ❤️";
+
 
     let area =
     document.getElementById("heartGame");
@@ -718,6 +783,7 @@ function startHeartGame(){
     area.innerHTML = "";
 
     createCatchHeart();
+
 }
 
 
@@ -728,16 +794,16 @@ function createCatchHeart(){
 
     area.innerHTML = "";
 
+
     let heart =
     document.createElement("button");
 
     heart.className =
     "catch-heart";
 
-    heart.innerHTML = "❤️";
+    heart.innerHTML =
+    "❤️";
 
-
-    /* 5th heart */
 
     if(heartScore === 4){
 
@@ -745,15 +811,11 @@ function createCatchHeart(){
 
     }
 
-    /* 8th heart */
-
     else if(heartScore === 7){
 
         escapeLimit = 2;
 
     }
-
-    /* 10th heart */
 
     else if(heartScore === 9){
 
@@ -767,7 +829,9 @@ function createCatchHeart(){
 
     }
 
+
     escapeCount = 0;
+
 
     moveHeart(
         heart,
@@ -778,16 +842,14 @@ function createCatchHeart(){
     heart.onclick =
     function(){
 
-        /* HEART ESCAPES */
 
-        if(
-            escapeCount <
-            escapeLimit
-        ){
+        if(escapeCount < escapeLimit){
 
             escapeCount++;
 
-            heart.innerHTML = "😁";
+            heart.innerHTML =
+            "😁";
+
 
             if(heartScore === 4){
 
@@ -816,10 +878,12 @@ function createCatchHeart(){
 
             }
 
+
             setTimeout(
                 function(){
 
-                    heart.innerHTML = "❤️";
+                    heart.innerHTML =
+                    "❤️";
 
                     moveHeart(
                         heart,
@@ -831,20 +895,18 @@ function createCatchHeart(){
             );
 
             return;
+
         }
 
 
-        /* ACTUALLY CAUGHT */
-
         heartScore++;
+
 
         document
         .getElementById("heartScore")
         .innerHTML =
         heartScore;
 
-
-        /* FINISHED */
 
         if(heartScore >= 10){
 
@@ -855,10 +917,12 @@ function createCatchHeart(){
             .innerHTML =
             "🎉 Finally! অবশেষে সবগুলো ধরে ফেলেছিস 😂❤️";
 
+
             document
             .getElementById("heartNext")
             .style.display =
             "inline-block";
+
 
             createHearts();
 
@@ -879,6 +943,7 @@ function createCatchHeart(){
 
 
     area.appendChild(heart);
+
 }
 
 
@@ -893,18 +958,20 @@ function moveHeart(
     let maxY =
     area.clientHeight - 60;
 
+
     heart.style.left =
-    Math.random()*maxX + "px";
+    Math.random()*maxX +
+    "px";
+
 
     heart.style.top =
-    Math.random()*maxY + "px";
+    Math.random()*maxY +
+    "px";
+
 }
 
 
-/* =========================
-   GAME 3
-   MEMORY MATCH
-========================= */
+/* GAME 3 */
 
 let memoryCards = [];
 
@@ -924,17 +991,21 @@ function startMemoryGame(){
         "memoryBoard"
     );
 
+
     board.innerHTML = "";
+
 
     document
     .getElementById("memoryNext")
     .style.display =
     "none";
 
+
     document
     .getElementById("memoryMessage")
     .innerHTML =
     "Find the matching pairs! 💖";
+
 
     firstCard = null;
 
@@ -946,9 +1017,11 @@ function startMemoryGame(){
 
 
     let symbols = [
+
         "💖",
         "🎂",
         "🎁"
+
     ];
 
 
@@ -966,22 +1039,32 @@ function startMemoryGame(){
 
 
     memoryCards.forEach(
-        function(symbol,index){
+        function(
+            symbol,
+            index
+        ){
 
             let card =
-            document.createElement("button");
+            document.createElement(
+                "button"
+            );
+
 
             card.className =
             "memory-card";
 
+
             card.dataset.symbol =
             symbol;
+
 
             card.dataset.index =
             index;
 
+
             card.innerHTML =
             "❓";
+
 
             card.onclick =
             function(){
@@ -990,30 +1073,41 @@ function startMemoryGame(){
 
             };
 
+
             board.appendChild(card);
 
         }
     );
+
 }
 
 
 function flipCard(card){
 
     if(lockBoard){
+
         return;
+
     }
 
+
     if(card === firstCard){
+
         return;
+
     }
+
 
     if(
         card.classList.contains(
             "matched"
         )
     ){
+
         return;
+
     }
+
 
     card.innerHTML =
     card.dataset.symbol;
@@ -1024,6 +1118,7 @@ function flipCard(card){
         firstCard = card;
 
         return;
+
     }
 
 
@@ -1041,11 +1136,14 @@ function flipCard(card){
             "matched"
         );
 
+
         secondCard.classList.add(
             "matched"
         );
 
+
         matchedPairs++;
+
 
         resetCards();
 
@@ -1059,12 +1157,14 @@ function flipCard(card){
             .innerHTML =
             "🎉 You matched everything! Now for the real surprise! 💖";
 
+
             document
             .getElementById(
                 "memoryNext"
             )
             .style.display =
             "inline-block";
+
 
             createHearts();
 
@@ -1080,8 +1180,10 @@ function flipCard(card){
                 firstCard.innerHTML =
                 "❓";
 
+
                 secondCard.innerHTML =
                 "❓";
+
 
                 resetCards();
 
@@ -1090,6 +1192,7 @@ function flipCard(card){
         );
 
     }
+
 }
 
 
@@ -1100,12 +1203,11 @@ function resetCards(){
     secondCard = null;
 
     lockBoard = false;
+
 }
 
 
-/* =========================
-   FLOATING HEARTS
-========================= */
+/* FLOATING HEARTS */
 
 function createHearts(){
 
@@ -1118,17 +1220,22 @@ function createHearts(){
         let heart =
         document.createElement("div");
 
+
         heart.className =
         "heart";
 
+
         let emojis = [
+
             "❤️",
             "💕",
             "💖",
             "💗",
             "💓",
             "🌸"
+
         ];
+
 
         heart.innerHTML =
         emojis[
@@ -1138,19 +1245,24 @@ function createHearts(){
             )
         ];
 
+
         heart.style.left =
         Math.random()*100 +
         "vw";
+
 
         heart.style.animationDuration =
         (
             3 +
             Math.random()*3
-        ) + "s";
+        ) +
+        "s";
+
 
         document.body.appendChild(
             heart
         );
+
 
         setTimeout(
             function(){
@@ -1162,9 +1274,10 @@ function createHearts(){
         );
 
     }
+
 }
 
 </script>
 
 </body>
-</html>
+        </html>
